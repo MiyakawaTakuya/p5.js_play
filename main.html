@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play p5.js</title>
+    <!-- <scrip src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script> -->
+    <scrip src="p5/empty-example/sketch.js"></scrip>
+    <script src="p5/p5.js"></script>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <!-- <h1>frameCount</h1> -->
+
+    <script>
+        function setup() {  //最初の一回だけ処理
+            createCanvas(1200, 720);
+            // colorMode(HSB,360,100,100)
+            // colorMode(HSB,width,100,100)
+            noFill();
+            // strokeWeight(1);
+            // Fill(128);
+            // translate(40, 20);
+            // rotate(0.5);  //ラジアン180°＝3.14。 0.5はおよそ28.6°
+            console.log("Let's play p5.js!!");
+        }
+
+        function draw() {  //描画コマンド
+            console.log(frameCount);
+            frameRate(10)  //1秒間に描写する回数 初期値は６０
+            // ellipse(mouseX,mouseY,20,20);
+            // ellipse(mouseX, 300, 50, 50);
+            // ellipse(mouseX, frameCount, 50, 50);
+            // rect(frameCount, (mouseY) - 50, 100, 100);
+            // rect(250, (mouseY) - 210, 300, 420);
+            // rect(mouseX - 50, mouseY - 50, 100, 100);
+            // rect(mouseX - 25, mouseY - 25, 50, 50);
+            // background(125);
+            // scale(1.5);
+            // fill(360 - mouseY / 2, 50, 20);
+            if (frameCount % 5 === 4) {
+                ellipse(mouseX, mouseY, 120, 120);
+                fill(150, 150, 240);
+            } else if (frameCount % 10 === 0) {
+                ellipse(mouseX, mouseY, 100, 100);
+                fill(180, 50, 140);
+            } else {
+                ellipse(mouseX, mouseY, 70, 70);
+                fill(360 - mouseY / 2, 50, 180);
+            }
+            // if(frameCount%5 == 0){
+            //     fill(360-mouseY/2, 100, 100);
+            // line(122, 122, 0);
+            // fill(122,122,122);
+            // }
+        }
+
+    </script>
+
+</body>
+
+</html>
