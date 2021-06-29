@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play p5.js</title>
+    <!-- <scrip src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script> -->
+    <scrip src="p5/empty-example/sketch.js"></scrip>
+    <script src="p5/p5.js"></script>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <!-- <h1>frameCount</h1> -->
+
+    <script>
+        function setup() {  //最初の一回だけ処理
+            createCanvas(1200, 720);
+            noCursor();
+            colorMode(HSB, 180, 100, 100);
+            rectMode(CENTER);
+            noStroke();
+            console.log("Let's play p5.js!!");
+        }
+
+        function draw() {  //描画コマンド
+            background(mouseY / 2, 100, 100);
+            // console.log(frameCount);
+            // frameRate(10)  //1秒間に描写する回数 初期値は６０
+            // ellipse(mouseX,mouseY,20,20);
+            fill(360 - mouseY / 2, 150, 100);
+            rect(360, 360, mouseX + 1, mouseX + 1);
+        }
+    </script>
+
+</body>
+
+</html>

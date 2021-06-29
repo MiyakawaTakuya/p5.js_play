@@ -43,20 +43,19 @@
             // scale(1.5);
             // fill(360 - mouseY / 2, 50, 20);
             if (frameCount % 5 === 4) {
-                ellipse(mouseX, mouseY, 120, 120);
+                ellipse(mouseX, mouseY, 180, 180);
                 fill(150, 150, 240);
             } else if (frameCount % 10 === 0) {
                 ellipse(mouseX, mouseY, 100, 100);
                 fill(180, 50, 140);
+            } else if (frameCount % 3 === 0) {
+                ellipse(mouseX, mouseY, 100, 100);
+                fill(180, 50, 140);
             } else {
                 ellipse(mouseX, mouseY, 70, 70);
-                fill(360 - mouseY / 2, 50, 180);
+                fill(360 - mouseX / 3, 50, 130);
+                // fill(360 - mouseY / 2, 50, 180);
             }
-            // if(frameCount%5 == 0){
-            //     fill(360-mouseY/2, 100, 100);
-            // line(122, 122, 0);
-            // fill(122,122,122);
-            // }
         }
 
     </script>
