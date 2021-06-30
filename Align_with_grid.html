@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play p5.js</title>
+    <!-- <scrip src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script> -->
+    <scrip src="p5/empty-example/sketch.js"></scrip>
+    <script src="p5/p5.js"></script>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <script>
+        const tileCount = 20;  //グリッドの解像度を指定する
+
+        function setup() {  //最初の一回だけ処理
+            createCanvas(1200, 720);
+            console.log("Let's play p5.js!!");
+        }
+
+        function draw() {  //描画コマンド
+            // background(mouseY / 2, 100, 100);
+            strokeCap(actStrokeCap);
+
+            for (const gridY = 0; gridY < tileCount; gridY++) {
+                for (const gridX = 0; gridX < tileCount; gridX++) {
+                    const posX = width / tileCount * gridX;
+                    const posY = height / tileCount * gridY;
+                    const toggle = int(random(0, 2))  //0か1をランダム生成
+                    if (toggle == 0) {
+                        strokeWeight(mouseX / 20);
+                        line(posX, posY, posX + width / tileCount, posX + height / tileCount);
+                    }
+                    if (toggle == 1) {
+                        strokeWeight(mouseY / 20);
+                        line(posX, posY + width / tileCount, posX + height / tileCount, posY);
+                    }
+                }
+            }
+            // fill(360 - mouseY / 2, 150, 100);
+            // rect(360, 360, mouseX + 1, mouseX + 1);
+            function keyReleased() {
+                if (key == '1') actStrokeCap = ROUND;
+                if (key == '2') actStrokeCap = SQUARE;
+                if (key == '3') actStrokeCap = PROJECT;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

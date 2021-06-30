@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <script>
+        class g_BTree {  //一つのオブジェクトにする バイナリーツリー
+            constructor() {
+                this.val = -1; // データ 整数
+                this.num = 0; // データ数
+                this.left = null;
+                this.right = null;
+            }
+
+            inTree(n) {
+                if (this.num == 0) {
+                    this.val = n;
+                    this.num = 1;
+                    return 0;
+                }
+                if (this.val == n) { //同じ値が入ってきたら
+                    this.num++;  //数を一つ増やして終わり
+                    return 0;
+                }
+                if (n < this.val) {  //今入っている値より小さいのが入ってきたら
+                    if (this.left == null)
+                        this.left = new g_BTree();  //新しく作り替える
+                    return this.left.inTree(n);
+                }
+                if (n > this.val) {
+                    if (this.right == null)
+                        this.right = new g_BTree();
+                    return this.right.inTree(n);
+                }
+                return -1;
+            }
+
+
+            seaTree(n) {
+                if (this.val == n) return this.num;
+                if (n < this.val) {
+                    if (this.left == null) return 0;
+                    return this.left.seaTree(n);
+                }
+                if (n > this.val) {
+                    if (this.right == null) return 0;
+                    return this.right.seaTree(n);
+                }
+            }
+
+            countTree() {
+                var num = this.num;
+                if (this.left != null)
+                    num += this.left.countTree();
+                if (this.right != null)
+                    num += this.right.countTree();
+                return num;
+            }
+
+            printTree() {
+                if (this.left != null)
+                    this.left.printTree();
+                document.write(this.val + " : " + this.num + "<br />");
+                if (this.right != null)
+                    this.right.printTree();
+            }
+        }
+        //シンプルなコードだが数を代入していくと次々に新しいTreeを生み出していく構造
+
+        var tree01 = new g_BTree();
+
+        tree01.inTree(7);
+        tree01.inTree(8);
+        tree01.inTree(3);
+        tree01.inTree(5);
+        tree01.inTree(9);
+        tree01.inTree(3);
+        tree01.inTree(5);
+
+        for (var i = 0; i < 10; i++) {
+            var num = tree01.seaTree(i);
+            document.write("seaTree(" + i + ") : " + num + "<br />");
+        }
+
+        var num = tree01.countTree();
+        document.write("countTree : " + num + "<br />");
+
+        tree01.printTree();
+
+        console.log(tree01.inTree(2));
+        console.log(tree01.inTree(4));
+        console.log(tree01.inTree(9));
+    </script>
+</body>
+
+</html>
